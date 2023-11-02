@@ -1,16 +1,10 @@
 import { useState } from "react";
 import DeleteIcon from "../icons/DeleteIcon";
-import { Id, Task } from "../types";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { TaskCardProps } from "../types/index";
 
-interface Props {
-  task: Task;
-  deleteTask: (id: Id) => void;
-  updateTask: (id: Id, content: string) => void;
-}
-
-function TaskCard({ task, deleteTask, updateTask }: Props) {
+export function TaskCard({ task, deleteTask, updateTask }: TaskCardProps) {
   const [mouseIsOver, setMouseIsOver] = useState(false);
   const [editMode, setEditMode] = useState(true);
 
@@ -106,7 +100,7 @@ function TaskCard({ task, deleteTask, updateTask }: Props) {
           onClick={() => {
             deleteTask(task.id);
           }}
-          className="stroke-white absolute right-4 top-1/2 -translate-y-1/2 bg-columnBackgroundColor p-2 rounded opacity-60 hover:opacity-100"
+          className="absolute p-2 -translate-y-1/2 rounded stroke-white right-4 top-1/2 bg-columnBackgroundColor opacity-60 hover:opacity-100"
         >
           <DeleteIcon />
         </button>
